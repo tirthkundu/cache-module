@@ -2,5 +2,10 @@
   "express": {
     "port": 3005,
     "host": "localhost"
-  }
+  },
+  "db": {
+  "username": "tirthfashioncloud",
+  "password": "iGF9Vgf4757snO76",
+  "dbName": "fashionCloud"
+}
 }

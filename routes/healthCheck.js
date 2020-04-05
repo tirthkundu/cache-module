@@ -15,5 +15,4 @@ module.exports = function(app) {
 			return res.json(messages.getMessageDetails(e))
 		}
 	})
-
 }

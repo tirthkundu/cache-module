@@ -6,24 +6,24 @@ const config = require('config')
 const mongoClient = require('mongodb').MongoClient
 const mongoDbUrl = `mongodb+srv://${config.db.username}:${config.db.password}@cluster0-oesvy.mongodb.net/test?retryWrites=true&w=majority`
 const db = config.db.dbName
-let mongodb;
+let mongodb
 
-function connect(callback){
-    mongoClient.connect(mongoDbUrl, (err, client) => {
-        mongodb = client.db(db)
-        callback();
-    });
+function connect(callback) {
+	mongoClient.connect(mongoDbUrl, (err, client) => {
+		mongodb = client.db(db)
+		callback()
+	})
 }
-function get(){
-    return mongodb;
+function get() {
+	return mongodb
 }
 
-function close(){
-    mongodb.close();
+function close() {
+	mongodb.close()
 }
 
 module.exports = {
-    connect,
-    get,
-    close
-};
+	connect,
+	get,
+	close
+}

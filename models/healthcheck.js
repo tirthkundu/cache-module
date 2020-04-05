@@ -9,16 +9,18 @@ const db = require('../db/lib/mongoAdapter')
  Output: Success if query return results otherwise error
  */
 const pingDB = () => {
-
-    db.get().collection('health').find({}).toArray()
-        .then(() => {
-           return 'Ok'
-        })
-        .catch((err) => {
-        return 'Error'
-    })
+	db.get()
+		.collection('health')
+		.find({})
+		.toArray()
+		.then(() => {
+			return 'Ok'
+		})
+		.catch(err => {
+			return 'Error'
+		})
 }
 
 module.exports = {
-    pingDB: pingDB
+	pingDB: pingDB
 }

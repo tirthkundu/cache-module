@@ -8,7 +8,7 @@ const config = require('config'),
 	logger = require('morgan')
 
 const app = express()
-const db = require('./db/lib/mongoAdapter');
+const db = require('./db/lib/mongoAdapter')
 
 // Middlewares
 app.use(bodyParser.json())
@@ -31,12 +31,12 @@ express = {host: '', port: port}
 // Starting the node server
 
 db.connect(() => {
-    app.listen(express, function (){
-        console.log(
-            'Node server listening on %s:%d within %s environment',
-            host,
-            port,
-            app.set('env'))
-    });
-});
-
+	app.listen(express, function() {
+		console.log(
+			'Node server listening on %s:%d within %s environment',
+			host,
+			port,
+			app.set('env')
+		)
+	})
+})
