@@ -11,7 +11,7 @@ const getKeyValue = async function(params) {
         let value = await cacheModel.getKeyData(params.keyName)
         if(value <= 0){
 
-            value = utilities.createRandomString();
+            value = utilities.createRandomString(params.keyName);
             if(value == 0) {
                 await cacheModel.setKeyData(params.keyName, value)
             }
@@ -27,6 +27,27 @@ const getKeyValue = async function(params) {
     }
 }
 
+const getOnlyKeys = (keysData) => {
+    let result = []
+    keysData.forEach((val) => {
+        result.push(val.key)
+    })
+    return result
+
+}
+
+const getAllKeys = async function(params) {
+    try {
+        const allKeysResp = await cacheModel.getAllKeys()
+        const fetchAllKeysFromResp = getOnlyKeys(allKeysResp)
+        return {allKeys: fetchAllKeysFromResp}
+    } catch (e) {
+        // Throw unhandled errors or exceptions
+        throw e
+    }
+}
+
 module.exports = {
-    getKeyValue
+    getKeyValue,
+    getAllKeys
 }

@@ -14,6 +14,7 @@ let setKeyStub
 let updateValueStub
 let updateTTLStub
 let randomStringStub
+let getAllKeysStub
 
 describe('#cache controller', function() {
     // cache test cases
@@ -23,7 +24,6 @@ describe('#cache controller', function() {
             randomStringStub = sinon
                 .stub(utilities, 'createRandomString')
                 .callsFake(function(keyName) {
-                    console.log('keyName',keyName)
                    if (keyName == 'xyz') {
                         return  'BK15860968673321'
 
@@ -125,6 +125,42 @@ describe('#cache controller', function() {
                 resp.should.eql({ value: 'BK1586096224322' })
 
         })
+
+    })
+
+    describe('#getKeyValue', function() {
+
+        before(function(done) {
+            getAllKeysStub = sinon
+                .stub(cacheModel, 'getAllKeys')
+                .callsFake(function(keyName) {
+                    return Promise.resolve([{ _id: '5e89e1908b10813e1ed02c5a',
+                        key: 'abcd',
+                        value: 'BK1586094483554',
+                        createdAt: '2020-04-05T13:48:00.062Z' },
+                        { _id: '5e89e26dd100c13fc8f4f774',
+                            key: 'xyz',
+                            value: 'BK1586096867628',
+                            createdAt: '2020-04-05T14:27:52.868Z' } ]
+                    )
+
+                })
+            done()
+        })
+        after(function(done) {
+            getAllKeysStub.restore()
+            done()
+        })
+
+
+
+        it('should return keys available in cache', async function() {
+            const resp =  await cache.getAllKeys()
+            resp.allKeys[0].should.eql('abcd')
+            resp.allKeys[1].should.eql('xyz')
+
+        })
+
 
     })
 })

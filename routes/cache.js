@@ -17,4 +17,13 @@ module.exports = function(app) {
         }
     })
 
+    app.route('/cache/allKeys').get(async function(req, res) {
+        try {
+            const cacheKeys = await cache.getAllKeys()
+            return res.json(cacheKeys)
+        } catch (e) {
+            res.status(400)
+            return res.json(messages.getMessageDetails(e))
+        }
+    })
 }

@@ -6,7 +6,7 @@ const config = require('config')
 module.exports = {
 
     // Generate random string
-    createRandomString: () => {
+    createRandomString: (keyName) => {
         return 'BK' + (Number(new Date()) + Math.ceil(Math.random() * 10000))
     },
     isExpired : (datetime) => {

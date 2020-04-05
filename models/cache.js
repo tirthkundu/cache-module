@@ -67,10 +67,28 @@ const setKeyData =  (keyName,value) => {
     })
 }
 
+const getAllKeys =  () => {
+    return new Promise((resolve, reject) => {
+        db.get().collection('cacheData').find({}).toArray()
+            .then((data) => {
+                if (data.length == 0) {
+                    return resolve ([])
+                } else {
+                    return resolve (data)
+                }
+
+            })
+            .catch((err) => {
+                return reject('Error')
+            })
+    })
+}
+
 
 module.exports = {
     getKeyData,
     setKeyData,
     updateValue,
-    updateTTL
+    updateTTL,
+    getAllKeys
 }
