@@ -4,7 +4,7 @@
   "description": "Fashion cloud backend task",
   "main": "app.js",
   "scripts": {
-    "start" : "node app.js",
+    "start": "node app.js",
     "test": "find ./tests -name '*.js' | NODE_ENV=test xargs node_modules/.bin/mocha -R spec",
     "pretty": "find ./. -name '*.js' -not -path '././node_modules/*'  | xargs node_modules/.bin/prettier --list-different --config .prettierrc.json --write"
   },

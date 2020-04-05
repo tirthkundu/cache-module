@@ -2,11 +2,11 @@
 Backend task
 
 The repo consists of below APIs:
-- GET    /cache/:keyName	            //Returns the value corresponding to a key
-- GET    /cache/allKeys	                //Returns all keys present
-- PUT    /cache/:keyName	            //Update a key's value
-- DELETE /cache/:keyName	            //Delete a key from cache
-- POST   /cache/deleteAll	            //Deletes all keys
+- GET    /cache/key/:keyName	            //Returns the value corresponding to a key
+- GET    /cache/allKeys	                    //Returns all keys present
+- PUT    /cache/:keyName	                //Update a key's value
+- DELETE /cache/:keyName	                //Delete a key from cache
+- POST   /cache/deleteAll	                //Deletes all keys
 
 
 
