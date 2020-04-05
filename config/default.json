@@ -6,6 +6,7 @@
   "db": {
    "username": "tirthfashioncloud",
     "password": "iGF9Vgf4757snO76",
-    "dbName": "cache"
-  }
+    "dbName": "fashionCloud"
+  },
+  "cacheTTL": 600
 }

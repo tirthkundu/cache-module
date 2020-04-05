@@ -21,6 +21,7 @@ app.use(logger('combined'))
 
 // Initialising all routers
 require('./routes/healthCheck')(app)
+require('./routes/cache')(app)
 
 // Defining the port on which node will listen
 const port = process.env.PORT || config.express.port || 3005
