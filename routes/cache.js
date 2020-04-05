@@ -6,7 +6,7 @@ const messages = require('../services/messages')
 
 // Route to check health of DB and EC2 instances
 module.exports = function(app) {
-    app.route('/cache/key/:keyName').get(async function(req, res) {
+    app.route('/cache/:keyName').get(async function(req, res) {
         try {
             const params = req.params
             const cacheData = await cache.getKeyValue(params)
@@ -27,11 +27,22 @@ module.exports = function(app) {
         }
     })
 
-    app.route('/cache/updateKey').put(async function(req, res) {
+    app.route('/cache/:keyName').put(async function(req, res) {
         try {
-            const params = req.body
+            const params = req.params
             const keyUpdate = await cache.updateKey(params)
             return res.json(keyUpdate)
+        } catch (e) {
+            res.status(422)
+            return res.json(messages.getMessageDetails(e))
+        }
+    })
+
+    app.route('/cache/:keyName').delete(async function(req, res) {
+        try {
+            const params = req.params
+            const keydelete = await cache.deleteKey(params)
+            return res.json(keydelete)
         } catch (e) {
             res.status(422)
             return res.json(messages.getMessageDetails(e))
