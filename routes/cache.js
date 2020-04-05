@@ -41,8 +41,18 @@ module.exports = function(app) {
     app.route('/cache/:keyName').delete(async function(req, res) {
         try {
             const params = req.params
-            const keydelete = await cache.deleteKey(params)
-            return res.json(keydelete)
+            const keyDelete = await cache.deleteKey(params)
+            return res.json(keyDelete)
+        } catch (e) {
+            res.status(422)
+            return res.json(messages.getMessageDetails(e))
+        }
+    })
+
+    app.route('/cache/deleteAll').post(async function(req, res) {
+        try {
+            const keysDelete = await cache.deleteAllKeys()
+            return res.json(keysDelete)
         } catch (e) {
             res.status(422)
             return res.json(messages.getMessageDetails(e))

@@ -16,6 +16,7 @@ let updateTTLStub
 let randomStringStub
 let getAllKeysStub
 let deleteKeyStub
+let deleteAllKeysStub
 
 describe('#cache controller', function() {
 
@@ -110,6 +111,22 @@ describe('#cache controller', function() {
     })
     after(function(done) {
         deleteKeyStub.restore()
+        done()
+    })
+
+
+    before(function(done) {
+        deleteAllKeysStub = sinon
+            .stub(cacheModel, 'deleteAllKeys')
+            .callsFake(function(keyName,value) {
+                    return Promise.resolve(
+                        true
+                    )
+            })
+        done()
+    })
+    after(function(done) {
+        deleteAllKeysStub.restore()
         done()
     })
 
@@ -226,5 +243,21 @@ describe('#cache controller', function() {
             }
         })
 
+    })
+
+    describe('#deleteAllKeys', function() {
+
+        it('should return success if all keys are deleted', async function() {
+            const resp =  await cache.deleteAllKeys()
+            resp.success.should.eql(true)
+        })
+
+        it('should return error if all keys are not deleted', async function() {
+            try {
+                await cache.deleteAllKeys()
+            } catch (e) {
+                e.should.containEql('Error')
+            }
+        })
     })
 })

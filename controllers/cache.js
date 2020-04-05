@@ -69,9 +69,20 @@ const deleteKey = async function(params) {
     }
 }
 
+const deleteAllKeys = async function(params) {
+    try {
+        await cacheModel.deleteAllKeys()
+        return {"success": true}
+    } catch (e) {
+        // Throw unhandled errors or exceptions
+        throw e
+    }
+}
+
 module.exports = {
     getKeyValue,
     getAllKeys,
     updateKey,
-    deleteKey
+    deleteKey,
+    deleteAllKeys
 }

@@ -38,6 +38,18 @@ const deleteKey = (keyName) => {
     })
 }
 
+const deleteAllKeys = () => {
+    return new Promise((resolve, reject) => {
+        db.get().collection('cacheData').remove({})
+            .then((data) => {
+                resolve (true)
+            })
+            .catch((err) => {
+                reject('Error')
+            })
+    })
+}
+
 const getKeyData =  keyName => {
     return new Promise((resolve, reject) => {
         db.get().collection('cacheData').find({key: keyName}).toArray()
@@ -103,5 +115,6 @@ module.exports = {
     updateValue,
     updateTTL,
     getAllKeys,
-    deleteKey
+    deleteKey,
+    deleteAllKeys
 }
