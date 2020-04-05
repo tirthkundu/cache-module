@@ -47,7 +47,20 @@ const getAllKeys = async function(params) {
     }
 }
 
+const updateKey = async function(params) {
+    try {
+
+        const value = utilities.createRandomString(params.keyName);
+        await cacheModel.updateValue(params.keyName, value)
+        return {"success": true, "newValue":value}
+    } catch (e) {
+        // Throw unhandled errors or exceptions
+        throw e
+    }
+}
+
 module.exports = {
     getKeyValue,
-    getAllKeys
+    getAllKeys,
+    updateKey
 }

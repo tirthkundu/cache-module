@@ -26,4 +26,15 @@ module.exports = function(app) {
             return res.json(messages.getMessageDetails(e))
         }
     })
+
+    app.route('/cache/updateKey').put(async function(req, res) {
+        try {
+            const params = req.body
+            const keyUpdate = await cache.updateKey(params)
+            return res.json(keyUpdate)
+        } catch (e) {
+            res.status(422)
+            return res.json(messages.getMessageDetails(e))
+        }
+    })
 }

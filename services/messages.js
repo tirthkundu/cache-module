@@ -18,11 +18,6 @@ const MessageCodes = {
 		msgCode: 'MG002',
 		msgText: 'Something went wrong.',
 		msgType: 'Error'
-	},
-	MG003: {
-		msgCode: 'MG003',
-		msgText: 'Booking not possible for desired dates',
-		msgType: 'Error'
 	}
 }
 
