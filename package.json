@@ -9,7 +9,7 @@
     "pretty": "find ./. -name '*.js' -not -path '././node_modules/*'  | xargs node_modules/.bin/prettier --list-different --config .prettierrc.json --write"
   },
   "dependencies": {
-    "async": "^2.1.4",
+    "async": "^2.6.4",
     "axios": "^0.19.2",
     "body-parser": "^1.15.2",
     "config": "^1.24.0",
