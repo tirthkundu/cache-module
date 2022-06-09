@@ -1,4 +1,4 @@
-# Fashion Cloud task
+# Cache module
 Backend task
 
 The repo consists of below APIs:
@@ -13,7 +13,7 @@ The repo consists of below APIs:
 
 <b>Local Setup</b>
 - Install [node](https://nodejs.org/en/).
-- Clone the git repo: git clone https://github.com/tirthkundu/fashioncloud.git in your local working directory.
+- Clone the git repo: git clone https://github.com/tirthkundu/cache-module.git in your local working directory.
 - Go to the `fashioncloud` directory.
 - Run `npm install`.
 - To run the application: `npm start`.
